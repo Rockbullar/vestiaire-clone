@@ -4,4 +4,5 @@ class CartItemController < ApplicationController
     @cart_item.delete
     redirect_to user_cart_path(User.find(@cart_item.cart.user.id))
   end
+
 end

@@ -1,9 +1,18 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy, :mark_complete]
+  before_action :set_cart, only: [:checkout]
   before_action :set_user, only: [:active, :history]
   def active
-    @user = User.find(params[:user_id])
-    @cart = @user.carts[0]
+    @cart = @user.carts.last
+  end
+
+  def checkout
+    @cart.status = 'purchased'
+    Cart.create!(status: 'active', user: @cart.user)
+    @cart.items.each do |item|
+      item.is_sold = true
+    end
+    flash.alert = "Cart checked out"
+    redirect_to user_cart_path(@cart.user)
   end
 
   def history
