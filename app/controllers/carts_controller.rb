@@ -16,7 +16,7 @@ class CartsController < ApplicationController
   end
 
   def history
-
+    @carts = Cart.where(user: @user)
   end
 
   private
