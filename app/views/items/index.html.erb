@@ -1,4 +1,7 @@
-@items
 <% @items.each do |item| %>
-<%= item %>
+  <%= item.name %>
+  <%= item.description %>
+  <%= item.price %>
+  <%= item.brand %>
+  <%= item.is_sold ? "Sold" : "Not sold" %>
 <% end %>

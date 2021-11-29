@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.float :price
       t.string :brand
       t.boolean :is_sold
+      t.references :user
 
       t.timestamps
     end
