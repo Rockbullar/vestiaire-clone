@@ -1,7 +1,11 @@
-<%= item.name %>
-<%= item.description %>
-<%= item.price %>
-<%= item.brand %>
-<%= item.is_sold %>
-<%= item.user.name %>
-
+<div class="d-flex border justify-content-between px-5">
+  <div class='mx-1 px-2'>
+    <p><%= item.name %></p>
+  </div>
+  <div>
+      <p><%= item.description %></p>
+  </div>
+  <div>
+      <p><%= item.price %></p>
+  </div>
+</div>

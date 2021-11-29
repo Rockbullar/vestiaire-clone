@@ -1,8 +1,16 @@
-<% @cart.items.each do |item| %>
-<%= item.name %>
-<%= item.description %>
-<%= item.price %>
-<%= item.brand %>
-<%= item.is_sold %>
-<%= item.user.name %>
-<% end %>
+<div class="container">
+  <div class="d-flex border justify-content-between px-5">
+    <div class='mx-1 px-2'>
+      <p>name</p>
+    </div>
+    <div>
+        <p>description</p>
+    </div>
+    <div>
+        <p>price</p>
+    </div>
+  </div>
+  <% @cart.items.each do |item| %>
+    <%= render 'shared/item_row', item: item %>
+  <% end %>
+</div>
