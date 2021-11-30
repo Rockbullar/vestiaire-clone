@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2021_11_29_091640) do
 
   # These are extensions that must be enabled in order to support this database
@@ -39,9 +38,9 @@ ActiveRecord::Schema.define(version: 2021_11_29_091640) do
     t.float "price"
     t.string "brand"
     t.boolean "is_sold"
-    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
