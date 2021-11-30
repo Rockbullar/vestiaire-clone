@@ -6,7 +6,15 @@ class CartItemController < ApplicationController
   end
 
   def create
+    @item = Item.find(params[:item])
+    @user = User.find(params[:user])
+    if @user.carts.count === 0
+      Cart.create!(user: @user, status: 'active')
+    end
+    CartItem.create!(cart: @user.active_cart, item: @item)
+    flash.alert = "Item added to cart"
     
   end
+
 
 end
