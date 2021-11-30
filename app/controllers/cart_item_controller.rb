@@ -5,4 +5,8 @@ class CartItemController < ApplicationController
     redirect_to user_cart_path(User.find(@cart_item.cart.user.id))
   end
 
+  def create
+    
+  end
+
 end
