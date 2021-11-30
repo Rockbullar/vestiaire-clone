@@ -5,10 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+CartItem.destroy_all
 Item.destroy_all
+Cart.destroy_all
 User.destroy_all
-# Cart.destroy_all
-# CartItem.destroy_all
 
 # SEED ON USER AS SELLER
 3.times do
