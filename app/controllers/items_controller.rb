@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(item_params)
+    @item = Item.find(params[:id])
   end
 
   def new
@@ -21,9 +21,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(item_params[:id])
-    @item.destroyed
-
+    @item = Item.find(params[:id])
+    @item.destroy
     redirect_to items_path
   end
 
