@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def listed
+  def userlistings
     @items = Item.all
   end
 

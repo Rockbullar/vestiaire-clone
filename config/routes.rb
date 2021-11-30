@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  get "items/yourlistings", to: "items#listed", as: 'items_listed' #search for user's own listings
   resources :items, only: [:index, :show, :destroy, :create]
+  get "users/:user_id/items", to: "items#userlistings", as: 'user_items' #search for user's own listings
 
   resources :users do
     resources :items, only: [:edit, :update, :new, :create]
