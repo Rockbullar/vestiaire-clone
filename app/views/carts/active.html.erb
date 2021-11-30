@@ -1,3 +1,19 @@
-<% @cart.items.each do |item| %>
-<%= item.name %>
-<% end %>
+<div class="container">
+  <%= link_to 'Checkout', checkout_cart_path(@cart), method: :post %>
+  <div class="d-flex border justify-content-between px-5">
+    <div class='mx-1 px-2'>
+      <p>name</p>
+    </div>
+    <div>
+        <p>description</p>
+    </div>
+    <div>
+        <p>price</p>
+    </div>
+  </div>
+  <% @cart.items.each do |item| %>
+    <%= render 'shared/item_row', item: item %>
+    <% cart_item = CartItem.find_by(item: item, cart: @cart) %>
+    <<%= link_to 'x', destroy_cart_item_path(cart_item), method: :delete %>>
+  <% end %>
+</div>
