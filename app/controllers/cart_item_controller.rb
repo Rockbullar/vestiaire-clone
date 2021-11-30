@@ -6,7 +6,9 @@ class CartItemController < ApplicationController
   end
 
   def create
-    
+    CartItem.create!(cart: @user.active_cart, item:@item)
+    flash.alert = "Item added to cart"
   end
+
 
 end
