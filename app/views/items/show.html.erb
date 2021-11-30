@@ -1,0 +1,7 @@
+  <%= @item.name %>
+  <%= @item.description %>
+  <%= @item.price %>
+  <%= @item.brand %>
+  <%= @item.is_sold ? "Sold" : "Not sold" %>
+  <%= link_to "Edit", edit_user_item_path(@item) %>
+  <%= link_to "Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"} %>

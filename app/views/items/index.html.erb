@@ -22,6 +22,7 @@
           <%= item.price %>
           <%= item.brand %>
           <%= item.is_sold ? "Sold" : "Not sold" %>
+          <%= link_to "Details", item_path(item) %>
         </li>
       <% end %>
     </ol>
