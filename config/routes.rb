@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :items, only: [:index, :show, :destroy, :create]
-  get "users/:user_id/items", to: "items#userlistings", as: 'user_items' #search for user's own listings
 
   resources :users do
     resources :items, only: [:edit, :update, :new, :create]
     resources :carts, only: [:create]
     get '/carts/history', to: 'carts#history'
     get '/cart', to: 'carts#active'
+    get "/items", to: "items#userlistings", as: 'user_items' #search for user's own listings
   end
 
   post '/carts/:id/checkout', to: 'carts#checkout', as: 'checkout_cart' # change cart status to purchased, create new cart, update user's cart to new cart
