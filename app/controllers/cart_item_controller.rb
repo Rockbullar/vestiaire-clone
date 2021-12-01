@@ -13,7 +13,7 @@ class CartItemController < ApplicationController
     end
     CartItem.create!(cart: @user.active_cart, item: @item)
     flash.alert = "Item added to cart"
-    
+    redirect_back(fallback_location: root_path)
   end
 
 

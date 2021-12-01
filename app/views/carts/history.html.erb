@@ -1,3 +1,25 @@
-<% @carts.each do |cart| %>
-<%= cart %>
-<% end %>
+<ol>
+  <% @carts.each do |cart| %>
+    <li>
+      <div class="container m-5">
+        <div class="container">
+          <div class="row border p-2">
+            <div class="col-sm">
+              Name
+            </div>
+            <div class="col-sm">
+              Brand
+            </div>
+            <div class="col-sm">
+              Price
+            </div>
+          </div>
+          <% cart.items.each do |item| %>
+            <% cart_item = CartItem.find_by(item: item, cart: cart) %>
+            <%= render 'shared/item_row', item: item, cart_item: cart_item %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ol>

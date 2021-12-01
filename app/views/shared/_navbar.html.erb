@@ -12,16 +12,16 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+          <%= link_to "Home", items_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to 'Your listings', user_items_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Your cart', user_cart_path(current_user), class: "nav-link" %>
+          <%= link_to 'Cart', user_cart_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Order History', user_carts_history_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
