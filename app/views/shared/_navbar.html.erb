@@ -1,51 +1,48 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to items_path, class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+<!-- As a link -->
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <%= link_to root_path, class: "navbar-brand mx-auto" do %>
+    <i class="fas fa-angle-down fa-2x"></i>
   <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+</nav>
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <%= form_tag search_items_path, class: "form-inline", method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control mr-sm-2",
+      placeholder: "Discover our collection"
+    %>
+    <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
+  <% end %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <%# show if not signed in %>
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", items_path, class: "nav-link" %>
-        </li>
-        <li class = "nav-item">
-          <%= form_tag search_items_path, method: :get do %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Discover our collection"
-            %>
-            <%= submit_tag "Search", class: "btn btn-primary" %>
-          <% end %>
+        <li class="nav-item">
+          <%= link_to 'Sell your listing', new_user_item_path(current_user), class: 'btn btn-primary'  %>
         </li>
         <li class="nav-item">
           <%= link_to 'Your listings', user_items_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Cart', user_cart_path(current_user), class: "nav-link" %>
+          <%= link_to current_user.carts.count > 0 ? "Cart(#{current_user.active_cart.items.count})" : "Cart", user_cart_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to 'Order History', user_carts_history_path(current_user), class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
+        <li class="nav-item">
+          <%= link_to 'Log out', destroy_user_session_path, class: "nav-link", method: :delete %>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <%= link_to 'Sign in', new_user_session_path, class: 'nav-link'  %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link'  %>
         </li>
       <% end %>
     </ul>
   </div>
-</div>
+</nav>
