@@ -1,9 +1,24 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
-    if params['name']
-      name = params[:name]
-    @items = Item.where("name ILIKE ?", "%#{name}%")
+    if params['categories']
+      categories = params[:categories]
+      @items = Item.where("categories ILIKE ?", "%#{categories}%")
+    end
+  end
+
+  def search
+    if params[:query].present?
+      condition = params[:query]
+      sql_query = "name ILIKE :query OR brand ILIKE :query OR categories ILIKE :query"
+      # sql_query = "\
+      #   items.name @@ :query \
+      #   OR items.brand @@ :query \
+      #   OR items.categories @@ :query \
+      #   "
+      @items = Item.where(sql_query, query: "%#{condition}%")
+    else
+      @items = Item.all
     end
   end
 

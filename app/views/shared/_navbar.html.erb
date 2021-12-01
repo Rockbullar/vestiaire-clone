@@ -14,6 +14,16 @@
         <li class="nav-item active">
           <%= link_to "Home", items_path, class: "nav-link" %>
         </li>
+        <li class = "nav-item">
+          <%= form_tag search_items_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Discover our collection"
+            %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          <% end %>
+        </li>
         <li class="nav-item">
           <%= link_to 'Your listings', user_items_path(current_user), class: "nav-link" %>
         </li>
