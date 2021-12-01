@@ -18,7 +18,7 @@
           <%= link_to 'Your listings', user_items_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Cart(#{current_user.active_cart.items.count})", user_cart_path(current_user), class: "nav-link" %>
+          <%= link_to current_user.carts.count > 0 ? "Cart(#{current_user.active_cart.items.count})" : "Cart", user_cart_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to 'Order History', user_carts_history_path(current_user), class: "nav-link" %>
