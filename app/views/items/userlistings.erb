@@ -4,7 +4,6 @@
         <% if item.user == current_user %>
           <li>
             <%= item.name %>
-            <%= item.description %>
             <%= item.price %>
             <%= item.brand %>
             <%= item.is_sold ? "Sold" : "Not sold" %>
@@ -13,4 +12,5 @@
           <% end %>
       <% end %>
     </ol>
+    <%= link_to 'Add new listing', new_user_item_path(current_user) %>
   </div>

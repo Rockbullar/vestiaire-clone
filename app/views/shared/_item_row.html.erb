@@ -1,11 +1,14 @@
-<div class="d-flex border justify-content-between px-5">
-  <div class='mx-1 px-2'>
+<div class="row border p-2">
+  <div class="col-sm">
     <p><%= item.name %></p>
   </div>
-  <div>
-      <p><%= item.description %></p>
+  <div class="col-sm">
+    <p><%= item.brand %></p>
   </div>
-  <div>
+  <div class="col-sm">
+    <div class="d-flex">
       <p><%= item.price %></p>
+      <%= link_to '(x)', destroy_cart_item_path(cart_item), method: :delete, class: "ml-2" %>
+    </div>
   </div>
 </div>

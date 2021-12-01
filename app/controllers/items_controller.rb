@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
     @items = Item.all
     if params['name']
       name = params[:name]
-    @items = Item.where("name LIKE ?", "%#{name}%")
+    @items = Item.where("name ILIKE ?", "%#{name}%")
     end
   end
 

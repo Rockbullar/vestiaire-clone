@@ -9,7 +9,7 @@ class CartsController < ApplicationController
   end
 
   def checkout
-    @cart.status = 'inactive'
+    @cart.update!(status: 'inactive')
     Cart.create!(status: 'active', user: @cart.user)
     @cart.items.each do |item|
       item.is_sold = true

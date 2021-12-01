@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_many :cart_items, dependent: :destroy
   validate :size_check
   validate :category_check
 
