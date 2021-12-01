@@ -4,9 +4,12 @@
         <% if item.user == current_user %>
           <li>
             <%= item.name %>
+            <%= item.size %>
+            <%= item.categories %>
             <%= item.price %>
             <%= item.brand %>
             <%= item.is_sold ? "Sold" : "Not sold" %>
+            <img src= <%= item.image_url %> alt="img">
             <%= link_to "Details", item_path(item) %>
           </li>
           <% end %>

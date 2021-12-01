@@ -16,14 +16,16 @@ User.destroy_all
     email: Faker::Internet.email,
     password: '123456'
   })
+  categories = ['Tops', 'Bottoms', 'Accessories', 'Bags'].sample
   5.times do Item.create!({
     name: Faker::Commerce.product_name,
     size: ['S','M','L','XL','Fluffy'].sample,
-    categories: ['Tops', 'Bottoms', 'Accessories', 'Bags'].sample,
+    categories: categories,
     price: Faker::Number.decimal(l_digits: 3, r_digits: 2),
     brand: Faker::Commerce.brand,
     is_sold: false,
-    user: User.last
+    user: User.last,
+    image_url: "https://source.unsplash.com/600x400/?#{categories}"
   })
   end
 end

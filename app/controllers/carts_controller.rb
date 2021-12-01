@@ -9,13 +9,18 @@ class CartsController < ApplicationController
   end
 
   def checkout
-    @cart.update(status: 'inactive')
-    Cart.create(status: 'active', user: @cart.user)
-    @cart.items.each do |item|
-      item.update(is_sold: true)
+    if @cart.items.count <= 0
+      flash.alert = "Cart is empty!"
+      redirect_back(fallback_location: root_path)
+    else
+      @cart.update(status: 'inactive')
+      Cart.create(status: 'active', user: @cart.user)
+      @cart.items.each do |item|
+        item.update(is_sold: true)
+      end
+      flash.alert = "Cart checked out"
+      redirect_to user_cart_path(@cart.user)
     end
-    flash.alert = "Cart checked out"
-    redirect_to user_cart_path(@cart.user)
   end
 
   def history
