@@ -16,7 +16,7 @@
           </div>
           <% cart.items.each do |item| %>
             <% cart_item = CartItem.find_by(item: item, cart: cart) %>
-            <%= render 'shared/item_row', item: item, cart_item: cart_item %>
+            <%= render 'shared/cart_item_card', item: item, cart_item: cart_item %>
           <% end %>
         </div>
       </div>
