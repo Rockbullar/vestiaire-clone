@@ -8,7 +8,9 @@
   <div class="col-sm">
     <div class="d-flex">
       <p><%= item.price %></p>
-      <%= link_to '(x)', destroy_cart_item_path(cart_item), method: :delete, class: "ml-2" %>
+      <% if cart_item.cart.status='active' %>
+      <%= link_to '(X)', destroy_cart_item_path(cart_item), method: :delete, class: "ml-2" %>
+      <% end %>
     </div>
   </div>
 </div>
