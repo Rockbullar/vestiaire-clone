@@ -5,4 +5,3 @@
   <%= link_to "Edit", edit_user_item_path(@item) %>
   <%= link_to "Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"} %>
   <%= link_to "Add to cart", create_cart_item_path( user: current_user.id, item: @item.id), method: :post %>
-

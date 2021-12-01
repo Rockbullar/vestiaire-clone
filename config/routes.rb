@@ -16,6 +16,5 @@ Rails.application.routes.draw do
 
   delete '/cart_item/:id', to: 'cart_item#destroy', as: 'destroy_cart_item' # redirect back to cart show
   post '/cart_item', to: 'cart_item#create', as: 'create_cart_item' # no redirect, just flash a message
-  get "/search", to: "items#search", as: 'search_items'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

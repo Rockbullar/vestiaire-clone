@@ -5,7 +5,7 @@
   <% end %>
 </nav>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-  <%= form_tag search_items_path, class: "form-inline", method: :get do %>
+  <%= form_tag items_path, class: "form-inline", method: :get do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control mr-sm-2",
