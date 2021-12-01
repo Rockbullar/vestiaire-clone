@@ -11,9 +11,14 @@ class CartItemController < ApplicationController
     if @user.carts.count === 0
       Cart.create!(user: @user, status: 'active')
     end
-    CartItem.create!(cart: @user.active_cart, item: @item)
-    flash.alert = "Item added to cart"
-    redirect_back(fallback_location: root_path)
+    new_item = CartItem.new(cart: @user.active_cart, item: @item)
+    if new_item.save
+      flash.alert = "Item added to cart"
+      redirect_back(fallback_location: root_path)
+    else
+      flash.alert = "You already have that item in your cart!"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
 
