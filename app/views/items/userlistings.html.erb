@@ -1,6 +1,7 @@
+<h1 class='border bg-light p-3 text-center'>Your Listings</h1>
 <div class="container">
   <div class="cards row">
       <%= render 'shared/item_card' %>
   </div>
+  <%= link_to 'Add new listing', new_user_item_path(current_user), class: "btn btn-dark m-2"  %>
 </div>
-<%= link_to 'Add new listing', new_user_item_path(current_user) %>
