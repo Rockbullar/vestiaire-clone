@@ -24,10 +24,10 @@
 
 
       <% if current_user == @item.user %>
-      <%= link_to create_cart_item_path( user: current_user.id, item: @item.id), method: :post, class: 'btn btn-primary btn-block' do %>
+      <%= link_to edit_user_item_path(current_user, @item), method: :get, class: 'btn btn-primary btn-block' do %>
         <i class="fas fa-edit"></i> Edit
       <% end %>
-      <%= link_to create_cart_item_path( user: current_user.id, item: @item.id), method: :post, class: 'btn btn-danger btn-block' do %>
+      <%= link_to item_path(@item), method: :delete, class: 'btn btn-danger btn-block' do %>
         <i class="fas fa-trash"></i> Delete
       <% end %>
 
