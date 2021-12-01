@@ -1,25 +1,41 @@
-<ol>
+<% if @carts.count > 0 %>
   <% @carts.each do |cart| %>
-    <li>
-      <div class="container m-5">
-        <div class="container">
-          <div class="row border p-2">
-            <div class="col-sm">
-              Name
-            </div>
-            <div class="col-sm">
-              Brand
-            </div>
-            <div class="col-sm">
-              Price
-            </div>
-          </div>
-          <% cart.items.each do |item| %>
-            <% cart_item = CartItem.find_by(item: item, cart: cart) %>
-            <%= render 'shared/cart_item_card', item: item, cart_item: cart_item %>
-          <% end %>
+    <div class="container">
+      <div class="row border p-2 rounded my-5">
+        <div class="col-12">
+          <p class="text-center">Ordered on <%= cart.updated_at.strftime('%d %b %Y') %></p>
         </div>
       </div>
-    </li>
+      <div class="row border p-2 rounded mb-2">
+        <div class="col-2">
+          Item
+        </div>
+        <div class="col-4">
+          Description
+        </div>
+        <div class="col-4">
+          Details
+        </div>
+        <div class="col-2">
+          Price
+        </div>
+      </div>
+      <% cart.items.each do |item| %>
+        <% cart_item = CartItem.find_by(item: item, cart: cart) %>
+        <%= render 'shared/cart_item_card', item: item, cart_item: cart_item %>
+      <% end %>
+    </div>
   <% end %>
-</ol>
+<% else %>
+  <div class="container">
+      <div class="row border p-2 rounded my-5">
+        <div class="col-12">
+          <p class="text-center">You have not placed any orders</p>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between">
+      <%= link_to 'Continue shopping', root_path, class: "btn border btn-light" %>
+      <%= link_to 'Checkout', checkout_cart_path(@cart), method: :post, class: "btn btn-dark d-none" %>
+    </div>
+<% end %>
