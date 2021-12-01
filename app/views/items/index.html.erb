@@ -1,8 +1,8 @@
 <div class="d-flex">
-<%= link_to 'Hats', items_path(:name => 'hat'), class:'mx-5 btn-primary btn' %>
-<%= link_to 'Awesome', items_path(:name => 'awesome'), class:'mx-5 btn-primary btn' %>
 <%= link_to 'Tops', items_path(:name => 'top'), class:'mx-5 btn-primary btn' %>
 <%= link_to 'Bottoms', items_path(:name => 'bottom'), class:'mx-5 btn-primary btn' %>
+<%= link_to 'Accessories', items_path(:name => 'Accessories'), class:'mx-5 btn-primary btn' %>
+<%= link_to 'Bags', items_path(:name => 'Bags'), class:'mx-5 btn-primary btn' %>
 
 
 </div>
@@ -25,6 +25,7 @@
           <%= item.price %>
           <%= item.brand %>
           <%= item.is_sold ? "Sold" : "Not sold" %>
+          <img src= <%= item.image_url %> alt="img">
           <%= link_to "Details", item_path(item) %>
           <%= link_to "Add to cart", create_cart_item_path( user: current_user.id, item: item.id), method: :post %>
         </li>
