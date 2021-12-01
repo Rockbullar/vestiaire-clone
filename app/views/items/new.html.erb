@@ -1,10 +1,16 @@
-<%= simple_form_for (@item) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :price %>
-  <%= f.input :brand %>
-  <%= f.input :size %>
-  <%= f.input :categories %>
-  <%= f.submit "Sell your item" %>
-  <% end %>
-
-<%= link_to "Back to your items", items_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+    </div>
+    <div class="col-6">
+      <%= simple_form_for (@item) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :price %>
+      <%= f.input :brand %>
+      <%= f.input :size , collection: ['S','M','L','XL','Fluffy'], include_blank: false %>
+      <%= f.input :categories , collection: ['Tops', 'Bottoms', 'Accessories', 'Bags'], include_blank: false %>
+      <%= f.submit "List item", class: "btn btn-ghost" %> <%= link_to "Back to listings", items_path, class: "btn btn-ghost"  %>
+      <% end %>
+    </div>
+  </div>
+</div>
