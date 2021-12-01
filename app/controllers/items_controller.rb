@@ -1,9 +1,15 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
-    if params['name']
-      name = params[:name]
-    @items = Item.where("categories ILIKE ?", "%#{name}%")
+    if params['categories']
+      categories = params[:categories]
+      @items = Item.where("categories ILIKE ?", "%#{categories}%")
+    elsif params[:query].present?
+      condition = params[:query]
+      sql_query = "name ILIKE :query OR brand ILIKE :query OR categories ILIKE :query"
+      @items = Item.where(sql_query, query: "%#{condition}%")
+    else
+      @items = Item.all
     end
   end
 
@@ -22,6 +28,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user = current_user
+    @item.image_url = "https://source.unsplash.com/600x400/?#{@item.brand}},#{@item.categories}}"
     @item.save
     redirect_to items_path
     # item_path(@item)
@@ -46,6 +53,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :price, :brand)
+    params.require(:item).permit(:name, :description, :price, :brand, :categories)
   end
 end
