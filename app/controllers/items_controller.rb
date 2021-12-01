@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     else
       @items = Item.all
     end
+    @items = @items.where(is_sold: false)
   end
 
   def show
@@ -18,7 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def userlistings
-    @items = Item.all
+    @items = Item.where(user: current_user)
   end
 
   def new
