@@ -1,10 +1,29 @@
-  <%= @item.name %>
-  <%= @item.size %>
-  <%= @item.categories %>
-  <%= @item.price %>
-  <%= @item.brand %>
-  <%= @item.is_sold ? "Sold" : "Not sold" %>
-  <img src= <%= @item.image_url %> alt="img">
-  <%= link_to "Edit", edit_user_item_path(@item) %>
-  <%= link_to "Delete", item_path(@item), method: :delete, data: {confirm: "Are you sure?"} %>
-  <%= link_to "Add to cart", create_cart_item_path( user: current_user.id, item: @item.id), method: :post %>
+<div class="container">
+  <div class='text-center mt-3'>
+    <h2>
+      <%= @item.brand %>
+    </h2>
+    <h3>
+      <%= @item.name %>
+    </h3>
+  </div>
+  <div class="row">
+
+    <div class="col-6">
+      <div class="card-category mt-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=@item.image_url%>)">
+      </div>
+    </div>
+
+    <div class="col-6">
+      <p class="mt-5"><%= @item.categories %></p>
+      <p><%= @item.price %></p>
+      <%= link_to create_cart_item_path( user: current_user.id, item: @item.id), method: :post, class: 'btn btn-dark btn-block' do %>
+        <i class="fas fa-cart-plus"></i> Add to cart
+      <% end %>
+      <%= link_to create_cart_item_path( user: current_user.id, item: @item.id), method: :post, class: 'btn btn-dark btn-block' do %>
+        <i class="fas fa-cart-plus"></i> Add to cart
+      <% end %>
+    </div>
+
+  </div>
+</div>
