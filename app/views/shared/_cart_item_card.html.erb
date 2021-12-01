@@ -1,0 +1,20 @@
+<div class="row border rounded p-2 mb-3">
+  <div class="col-2">
+    <img src= <%= item.image_url %> alt="img" class="img-fluid">
+  </div>
+  <div class="col-4">
+    <p><%= item.brand %><br><%= item.categories %></p>
+  </div>
+  <div class="col-4">
+    <p>Size: <%= item.size %><br><%= item.name %></p>
+  </div>
+  <div class="col-2">
+    <div class="d-flex">
+      <p>$<%= item.price %></p>
+      <% if cart_item.cart.status == 'active' %>
+        <%= link_to content_tag(:i, '', :class => "fas fa-trash ml-2"), destroy_cart_item_path(cart_item), method: :delete %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
