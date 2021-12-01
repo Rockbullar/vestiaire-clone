@@ -1,11 +1,28 @@
-<div class="border justify-content-between px-5">
-  <div class='mx-1 px-2'>
-    <p><%= item.name %></p>
+<% @items.each do |item| %>
+<div class="card row border p-3 m-2">
+  <div class="d-flex justify-content-center">
+    <img src= <%= item.image_url %> class="rounded img" alt="img">
   </div>
-  <div>
-      <p><%= item.description %></p>
-  </div>
-  <div>
-      <p><%= item.price %></p>
+  <div class="pl-3">
+    <div>
+      <strong><%= item.brand %></strong>
+    </div>
+    <div>
+      <%= item.name %>
+    </div>
+    <div>
+      Size <%= item.size %>
+    </div>
+    <div>
+      <strong>$<%= item.price %></strong>
+    </div>
+    <div>
+      <%= link_to "Details", item_path(item) %>
+    </div>
+    <div>
+      <i class="fas fa-shopping-cart"></i>
+      <%= link_to "Add to cart", create_cart_item_path( user: current_user.id, item: item.id), method: :post %>
+    </div>
   </div>
 </div>
+<% end %>

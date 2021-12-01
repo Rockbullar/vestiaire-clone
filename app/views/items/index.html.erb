@@ -7,29 +7,15 @@
 
 </div>
 <h1 class='border bg-light'>All Items</h1>
-<div class="d-flex">
-  <div class="container">
-    <%= form_with path: items_path, method: :get do |form| %>
-      <%= form.label :keyword, "Search by name:" %>
-      <%= form.text_field :name %>
-      <%= form.submit "Search" %>
-    <% end %>
-  </div>
-  <div class="container">
-    <ol>
-      <% @items.each do |item| %>
-        <li>
-          <%= item.name %>
-          <%= item.size %>
-          <%= item.categories %>
-          <%= item.price %>
-          <%= item.brand %>
-          <%= item.is_sold ? "Sold" : "Not sold" %>
-          <img src= <%= item.image_url %> alt="img">
-          <%= link_to "Details", item_path(item) %>
-          <%= link_to "Add to cart", create_cart_item_path( user: current_user.id, item: item.id), method: :post %>
-        </li>
-      <% end %>
-    </ol>
+<div class="container">
+  <%= form_with path: items_path, method: :get do |form| %>
+    <%= form.label :keyword, "Search by name:" %>
+    <%= form.text_field :name %>
+    <%= form.submit "Search" %>
+  <% end %>
+</div>
+<div class="container">
+  <div class="cards row">
+      <%= render 'shared/item_card' %>
   </div>
 </div>
