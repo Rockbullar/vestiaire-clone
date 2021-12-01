@@ -2,6 +2,9 @@ class CartsController < ApplicationController
   before_action :set_cart, only: [:checkout]
   before_action :set_user, only: [:active, :history]
   def active
+    if @user.carts.count === 0
+      Cart.create!(user: @user, status: 'active')
+    end
     @cart = @user.active_cart
   end
 
