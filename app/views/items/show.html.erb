@@ -10,7 +10,7 @@
   <div class="row">
 
     <div class="col-6">
-      <div class="card-category mt-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=@item.image_url%>)">
+      <%= cl_image_tag @item.image_url.key, height: 300, width: 400, crop: :fill %>
       </div>
     </div>
 
@@ -18,13 +18,16 @@
       <p class="mt-5"><%= @item.categories %></p>
       <p>Size: <%= @item.size %></p>
       <p><%= @item.price %></p>
-      <%= link_to create_cart_item_path( user: current_user.id, item: @item.id), method: :post, class: 'btn btn-dark btn-block' do %>
-        <i class="fas fa-cart-plus"></i> Add to cart
+      <% if current_user.carts.count > 0 && current_user.active_cart.items.include?(@item) %>
+        <p>Item has been added to cart</p>
+      <% else %>
+        <%= link_to create_cart_item_path( user: current_user.id, item: @item.id), method: :post, class: 'btn btn-dark btn-block' do %>
+          <i class="fas fa-cart-plus"></i> Add to cart
+        <% end %>
       <% end %>
 
-
       <% if current_user == @item.user %>
-      <%= link_to edit_user_item_path(current_user, @item), method: :get, class: 'btn btn-primary btn-block' do %>
+      <%= link_to edit_item_path(@item), method: :get, class: 'btn btn-primary btn-block' do %>
         <i class="fas fa-edit"></i> Edit
       <% end %>
       <%= link_to item_path(@item), method: :delete, class: 'btn btn-danger btn-block' do %>

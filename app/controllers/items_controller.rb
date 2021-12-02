@@ -24,16 +24,14 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user = current_user
-    @item.image_url = "https://source.unsplash.com/600x400/?#{@item.brand}},#{@item.categories}}"
     @item.save
-    redirect_to items_path
-    # item_path(@item)
+    redirect_to user_items_path
   end
 
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to items_path
+    redirect_to user_items_path
   end
 
   def edit
@@ -43,12 +41,12 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to items_path
+    redirect_to user_items_path
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :price, :brand, :categories)
+    params.require(:item).permit(:name, :description, :price, :brand, :categories, :image_url)
   end
 end

@@ -1,32 +1,45 @@
 <div class="container">
-  <div class="container">
-    <div class="row border p-2 rounded my-5">
-      <div class="col-12">
-        <p class="text-center">Your Cart</p>
+  <% if @cart.items.count > 0 %>
+    <div class="container">
+      <div class="row border p-2 rounded my-5">
+        <div class="col-12">
+          <p class="text-center">Your Cart</p>
+        </div>
+      </div>
+      <div class="row border p-2 rounded mb-2">
+        <div class="col-2">
+          Item
+        </div>
+        <div class="col-4">
+          Description
+        </div>
+        <div class="col-4">
+          Details
+        </div>
+        <div class="col-2">
+          Price
+        </div>
+      </div>
+      <% @cart.items.each do |item| %>
+        <% cart_item = CartItem.find_by(item: item, cart: @cart) %>
+        <%= render 'shared/cart_item_card', item: item, cart_item: cart_item %>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-between">
+      <%= link_to 'Continue shopping', root_path, class: "btn border btn-light" %>
+      <%= link_to 'Checkout', checkout_cart_path(@cart), method: :post, class: "btn btn-dark" %>
+    </div>
+  <% else %>
+    <div class="container">
+      <div class="row border p-2 rounded my-5">
+        <div class="col-12">
+          <p class="text-center">Your cart is currently empty... but not for long!</p>
+        </div>
       </div>
     </div>
-    <div class="row border p-2 rounded mb-2">
-      <div class="col-2">
-        Item
-      </div>
-      <div class="col-4">
-        Description
-      </div>
-      <div class="col-4">
-        Details
-      </div>
-      <div class="col-2">
-        Price
-      </div>
+    <div class="d-flex justify-content-between">
+      <%= link_to 'Continue shopping', root_path, class: "btn border btn-light" %>
+      <%= link_to 'Checkout', checkout_cart_path(@cart), method: :post, class: "btn btn-dark d-none" %>
     </div>
-    <% @cart.items.each do |item| %>
-      <% cart_item = CartItem.find_by(item: item, cart: @cart) %>
-      <%= render 'shared/cart_item_card', item: item, cart_item: cart_item %>
-    <% end %>
-  </div>
-  <div class="d-flex justify-content-between">
-    <%= link_to 'Continue shopping', root_path, class: "btn border btn-light" %>
-    <%= link_to 'Checkout', checkout_cart_path(@cart), method: :post, class: "btn btn-dark" %>
-  </div>
-
+  <% end %>
 </div>

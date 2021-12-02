@@ -64,3 +64,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker'
 gem 'has_scope'
+
+# Add environment file
+gem 'dotenv-rails', groups: [:development, :test]
+
+#Add cloudinary file
+gem 'cloudinary', '~> 1.16.0'

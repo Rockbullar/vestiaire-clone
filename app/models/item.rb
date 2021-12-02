@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   validate :size_check
   validate :category_check
+  has_one_attached :image_url
 
   scope :by_price, -> (min_price, max_price) do
     where('price >= ? AND price <= ?', min_price.to_f, max_price.to_f)

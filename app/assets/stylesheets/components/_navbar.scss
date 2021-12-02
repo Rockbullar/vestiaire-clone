@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: rgb(213, 205, 205);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +9,24 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.text-black {
+  color: #000;
+}
+
+#cart-count {
+  position: relative;
+  right: 14px;
+  bottom: -2px;
+  font-size: 0.5em;
+}
+
+.categories-bar > .nav-link:hover {
+  border-bottom: 4px solid black;
+  color: rgb(255, 110, 32);
+}
+
+.categories-bar > .nav-link {
+  border-bottom: 4px solid transparent;
 }
