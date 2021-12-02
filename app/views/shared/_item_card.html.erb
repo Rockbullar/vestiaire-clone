@@ -20,7 +20,7 @@
         <%= link_to "Details", item_path(item) %>
       </div>
       <%# hide add to cart button if item is already in cart  %>
-      <% if current_user.active_cart.items.include?(item) %>
+      <% if current_user.carts.count > 0 && current_user.active_cart.items.include?(item) %>
         <div>
           <p>Added to cart</p>
         </div>
