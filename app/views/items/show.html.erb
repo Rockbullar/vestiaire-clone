@@ -18,10 +18,13 @@
       <p class="mt-5"><%= @item.categories %></p>
       <p>Size: <%= @item.size %></p>
       <p><%= @item.price %></p>
-      <%= link_to create_cart_item_path( user: current_user.id, item: @item.id), method: :post, class: 'btn btn-dark btn-block' do %>
-        <i class="fas fa-cart-plus"></i> Add to cart
+      <% if current_user.active_cart.items.include?(@item) %>
+        <p>Item has been added to cart</p>
+      <% else %>
+        <%= link_to create_cart_item_path( user: current_user.id, item: @item.id), method: :post, class: 'btn btn-dark btn-block' do %>
+          <i class="fas fa-cart-plus"></i> Add to cart
+        <% end %>
       <% end %>
-
 
       <% if current_user == @item.user %>
       <%= link_to edit_user_item_path(current_user, @item), method: :get, class: 'btn btn-primary btn-block' do %>
