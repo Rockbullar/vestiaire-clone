@@ -6,8 +6,8 @@
 </nav>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <%= form_tag items_path, class: "form-inline", method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
+    <%= text_field_tag :by_keyword,
+      params[:by_keyword],
       class: "form-control mr-sm-2",
       placeholder: "Discover our collection"
     %>
