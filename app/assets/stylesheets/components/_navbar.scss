@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: rgb(213, 205, 205);
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +9,11 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+#cart-count {
+  position: relative;
+  right: 14px;
+  bottom: -2px;
+  font-size: 0.5em;
 }
