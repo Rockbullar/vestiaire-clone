@@ -1,10 +1,10 @@
-import Swal from 'sweetalert2';
+import swal from 'sweetalert';
 
 const initSweetalert = (selector, options = {}) => {
   const swalButton = document.querySelector(selector);
   if (swalButton) { // protect other pages
     swalButton.addEventListener('click', () => {
-      Swal.fire(options);
+      swal(options);
     });
   }
 };
