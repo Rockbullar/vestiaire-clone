@@ -12,6 +12,10 @@ class Item < ApplicationRecord
     where('categories ILIKE ?', categories)
   end
 
+  scope :by_size, -> (size) do
+    where('size ILIKE ?', size)
+  end
+
   scope :by_keyword, -> (given_keyword) do
     # sql_query = " \
     #   movies.title ILIKE ? \
