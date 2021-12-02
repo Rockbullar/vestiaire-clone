@@ -18,7 +18,7 @@
       <p class="mt-5"><%= @item.categories %></p>
       <p>Size: <%= @item.size %></p>
       <p><%= @item.price %></p>
-      <% if current_user.active_cart.items.include?(@item) %>
+      <% if current_user.carts.count > 0 && current_user.active_cart.items.include?(@item) %>
         <p>Item has been added to cart</p>
       <% else %>
         <%= link_to create_cart_item_path( user: current_user.id, item: @item.id), method: :post, class: 'btn btn-dark btn-block' do %>
