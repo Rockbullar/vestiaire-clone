@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   validate :size_check
   validate :category_check
+  has_one_attached :image_url
 
   private
 
