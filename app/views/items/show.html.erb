@@ -27,7 +27,7 @@
       <% end %>
 
       <% if current_user == @item.user %>
-      <%= link_to edit_user_item_path(current_user, @item), method: :get, class: 'btn btn-primary btn-block' do %>
+      <%= link_to edit_item_path(@item), method: :get, class: 'btn btn-primary btn-block' do %>
         <i class="fas fa-edit"></i> Edit
       <% end %>
       <%= link_to item_path(@item), method: :delete, class: 'btn btn-danger btn-block' do %>

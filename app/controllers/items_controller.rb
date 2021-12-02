@@ -32,7 +32,6 @@ class ItemsController < ApplicationController
     @item.image_url = "https://source.unsplash.com/600x400/?#{@item.brand}},#{@item.categories}}"
     @item.save
     redirect_to items_path
-    # item_path(@item)
   end
 
   def destroy
