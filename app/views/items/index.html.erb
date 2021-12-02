@@ -8,25 +8,29 @@
 
 <div class="container">
   <div class="row">
-    <ul class="list-inline">
-      <form action="/items" class="mb-3">
-        <li class="list-inline-item"><input type="number" class="form-control mt-3" placeholder="Min price" name="by_price[min_price]" ></li>
-        <li class="list-inline-item"><input type="number" class="form-control mt-3" placeholder="Max price" name="by_price[max_price]" ></li>
-        <input type="submit" class="btn btn-dark btn-block mt-3"></li>
-      </form>
-    </ul>
-    <ul>
-      <form action="/items" class="mb-3">
-        <li><input type="checkbox" class="form-control mt-3" name="by_size[]" value="S"><label>S</label></li>
-        <li><input type="checkbox" class="form-control mt-3" name="by_size[]" value="M"><label>M</label></li>
-        <li><input type="checkbox" class="form-control mt-3" name="by_size[]" value="L"><label>L</label></li>
-        <li><input type="checkbox" class="form-control mt-3" name="by_size[]" value="XL"><label>XL</label></li>
-        <li><input type="checkbox" class="form-control mt-3" name="by_size[]" value="Fluffy"><label>Fluffy</label></li>
-        <input type="submit" class="btn btn-dark btn-block mt-3"></li>
-      </form>
-    </ul>
+    <div class="col-3">
+      <ul class="list-inline">
+        <form action="/items" class="mb-3">
+          <li class="list-inline-item"><input type="number" class="form-control mt-3" placeholder="Min price" name="by_price[min_price]" ></li>
+          <li class="list-inline-item"><input type="number" class="form-control mt-3" placeholder="Max price" name="by_price[max_price]" ></li>
+          <input type="submit" class="btn btn-dark btn-block mt-3"></li>
+        </form>
+      </ul>
+      <ul>
+        <form action="/items" class="mb-3">
+          <li><input type="checkbox" class="form-control mt-3" name="by_size[size_array][]" value="S"><label>S</label></li>
+          <li><input type="checkbox" class="form-control mt-3" name="by_size[size_array][]" value="M"><label>M</label></li>
+          <li><input type="checkbox" class="form-control mt-3" name="by_size[size_array][]" value="L"><label>L</label></li>
+          <li><input type="checkbox" class="form-control mt-3" name="by_size[size_array][]" value="XL"><label>XL</label></li>
+          <li><input type="checkbox" class="form-control mt-3" name="by_size[size_array][]" value="Fluffy"><label>Fluffy</label></li>
+          <input type="submit" class="btn btn-dark btn-block mt-3"></li>
+        </form>
+      </ul>
+    </div>
   </div>
-  <div class="cards row">
-    <%= render 'shared/item_card' %>
+  <div class="row">
+    <div class ="cards col-9">
+      <%= render 'shared/item_card' %>
+    </div>
   </div>
 </div>

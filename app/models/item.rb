@@ -12,24 +12,17 @@ class Item < ApplicationRecord
     where('categories ILIKE ?', categories)
   end
 
-  scope :by_size, -> (size) do
-    where('size ILIKE ?', size)
+  scope :by_size, -> (size_array) do
+    where("size ILIKE ANY ( array[?] )", size_array)
   end
 
   scope :by_keyword, -> (given_keyword) do
-    # sql_query = " \
-    #   movies.title ILIKE ? \
-    #   OR movies.synopsis ILIKE ? \
-    #   OR directors.first_name ILIKE ? \
-    #   OR directors.last_name ILIKE ? \
-    # "
     sql_query = " \
       items.name ILIKE ? \
       OR items.brand ILIKE ? \
       OR items.categories ILIKE ? \
     "
     where(sql_query, "%#{given_keyword}%", "%#{given_keyword}%", "%#{given_keyword}%")
-    # joins(:director).where(sql_query, "%#{given_keyword}%", "%#{given_keyword}%", "%#{given_keyword}%", "%#{given_keyword}%")
   end
 
   private
