@@ -1,11 +1,10 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:checkout]
-  before_action :set_user, only: [:active, :history]
   def active
-    if @user.carts.count === 0
-      Cart.create!(user: @user, status: 'active')
+    if current_user.carts.count === 0
+      Cart.create!(user: current_user, status: 'active')
     end
-    @cart = @user.active_cart
+    @cart = current_user.active_cart
   end
 
   def checkout
@@ -19,19 +18,15 @@ class CartsController < ApplicationController
         item.update(is_sold: true)
       end
       flash.alert = "Cart checked out"
-      redirect_to user_cart_path(@cart.user)
+      redirect_to cart_path
     end
   end
 
   def history
-    @carts = @user.purchased_carts
+    @carts = current_user.purchased_carts
   end
 
   private
-
-  def set_user
-    @user = User.find(params[:user_id])
-  end
 
   def set_cart
     @cart = Cart.find(params[:id])

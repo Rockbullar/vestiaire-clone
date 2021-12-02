@@ -21,13 +21,13 @@
       <%# show if not signed in %>
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to 'Sell an item', new_user_item_path(current_user), class: 'btn btn-dark'  %>
+          <%= link_to 'Sell an item', new_item_path, class: 'btn btn-dark'  %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Your listings', user_items_path(current_user), class: "nav-link" %>
+          <%= link_to 'Your listings', user_items_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to user_cart_path(current_user), class: "nav-link" do %>
+          <%= link_to cart_path, class: "nav-link" do %>
             <% if current_user.active_cart.items.count > 0 && current_user.carts.count > 0 %>
               <i class="fas fa-shopping-cart fa-lg">
                 <span id='cart-count' class="badge badge-pill badge-dark", style="background-color:#FF5A26; color:black"><%= current_user.active_cart.items.count %></span>
@@ -38,7 +38,7 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Order History', user_carts_history_path(current_user), class: "nav-link" %>
+          <%= link_to 'Order History', carts_history_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
           <%= link_to 'Log out', destroy_user_session_path, class: "nav-link", method: :delete %>
