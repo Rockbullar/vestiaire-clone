@@ -9,7 +9,9 @@
 </div>
 
 <div class="container">
-  <div class="cards row">
-      <%= render 'shared/item_card' %>
+  <div class="cards">
+    <% @items.each do |item| %>
+      <%= render 'shared/item_card', item: item %>
+    <% end %>
   </div>
 </div>
