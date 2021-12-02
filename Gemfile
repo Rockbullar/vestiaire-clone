@@ -66,3 +66,6 @@ gem 'faker'
 
 # Add environment file
 gem 'dotenv-rails', groups: [:development, :test]
+
+#Add cloudinary file
+gem 'cloudinary', '~> 1.16.0'
