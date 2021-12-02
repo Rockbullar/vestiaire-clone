@@ -1,15 +1,17 @@
 <h1 class='border bg-light p-3 text-center'>All Items</h1>
-<div class="d-flex p-3">
-<%= link_to 'Tops', items_path(:categories => 'Tops'), class:'mx-5 btn-dark btn' %>
-<%= link_to 'Bottoms', items_path(:categories => 'Bottoms'), class:'mx-5 btn-dark btn' %>
-<%= link_to 'Accessories', items_path(:categories => 'Accessories'), class:'mx-5 btn-dark btn' %>
-<%= link_to 'Bags', items_path(:categories => 'Bags'), class:'mx-5 btn-dark btn' %>
 
-
+<div class="categories-bar d-flex p-4">
+  <%= link_to 'Tops', items_path(:categories => 'Tops'), class:'text-black nav-link mx-3' %>
+  <%= link_to 'Bottoms', items_path(:categories => 'Bottoms'), class:'text-black nav-link mx-3' %>
+  <%= link_to 'Accessories', items_path(:categories => 'Accessories'), class:'text-black nav-link mx-3' %>
+  <%= link_to 'Bags', items_path(:categories => 'Bags'), class:'text-black nav-link mx-3' %>
+</div>
+<div>
+  <p>test</p>
 </div>
 
 <div class="container">
   <div class="cards row">
-      <%= render 'shared/item_card' %>
+      <%= render 'shared/item_card'%>
   </div>
 </div>
