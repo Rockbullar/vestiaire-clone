@@ -27,7 +27,15 @@
           <%= link_to 'Your listings', user_items_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to current_user.carts.count > 0 ? "Cart(#{current_user.active_cart.items.count})" : "Cart", user_cart_path(current_user), class: "nav-link" %>
+          <%= link_to user_cart_path(current_user), class: "nav-link" do %>
+            <% if current_user.active_cart.items.count > 0 && current_user.carts.count > 0 %>
+              <i class="fas fa-shopping-cart fa-lg">
+                <span id='cart-count' class="badge badge-pill badge-dark", style="background-color:#FF5A26; color:black"><%= current_user.active_cart.items.count %></span>
+              </i>
+            <% else %>
+              <i class="fas fa-shopping-cart fa-lg"></i>
+            <% end %>
+          <% end %>
         </li>
         <li class="nav-item">
           <%= link_to 'Order History', user_carts_history_path(current_user), class: "nav-link" %>
