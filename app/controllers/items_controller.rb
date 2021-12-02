@@ -6,17 +6,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = apply_scopes(Item).all
-    # @items = Item.all
-    # if params['categories']
-    #   categories = params[:categories]
-    #   @items = Item.where("categories ILIKE ?", "%#{categories}%")
-    # elsif params[:query].present?
-    #   condition = params[:query]
-    #   sql_query = "name ILIKE :query OR brand ILIKE :query OR categories ILIKE :query"
-    #   @items = Item.where(sql_query, query: "%#{condition}%")
-    # else
-    #   @items = Item.all
-    # end
     @items = @items.where(is_sold: false)
   end
 
