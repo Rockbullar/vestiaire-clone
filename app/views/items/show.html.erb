@@ -7,15 +7,13 @@
       <%= @item.name %>
     </h3>
   </div>
-  <div class="row">
-
-    <div class="col-6">
-      <%= cl_image_tag @item.image_url.key, height: 300, width: 400, crop: :fill %>
-      </div>
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <%= cl_image_tag @item.image_url.key, crop: :fill, class: 'w100' %>
     </div>
-
-    <div class="col-6">
-      <p class="mt-5"><%= @item.categories %></p>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8 py-3">
       <p>Size: <%= @item.size %></p>
       <p><%= @item.price %></p>
       <% if current_user.carts.count > 0 && current_user.active_cart.items.include?(@item) %>
@@ -33,10 +31,7 @@
       <%= link_to item_path(@item), method: :delete, class: 'btn btn-danger btn-block' do %>
         <i class="fas fa-trash"></i> Delete
       <% end %>
-
       <% end %>
-
     </div>
-
   </div>
 </div>

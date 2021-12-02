@@ -44,7 +44,9 @@
       </div>
     </div>
     <div class="cards col-9">
-        <%= render @items %>
+      <% @items.each do |item| %>
+        <%= render 'shared/item_card', item: item %>
+      <% end %>
     </div>
   </div>
 </div>

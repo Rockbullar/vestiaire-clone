@@ -1,0 +1,28 @@
+  <div class="card p-3 m-2">
+    <%= link_to item_path(item) do %>
+
+      <div class="d-flex justify-content-center">
+        <%= cl_image_tag item.image_url.key, class: 'w100', crop: :fill %>
+      </div>
+
+      <div class="pl-3">
+
+        <div><strong><%= item.brand %></strong></div>
+        <div><%= item.name %></div>
+        <div>Size <%= item.size %></div>
+        <div><strong>$<%= item.price %></strong></div>
+        <div><%= link_to "Details", item_path(item) %></div>
+        <%# hide add to cart button if item is already in cart  %>
+
+        <% if current_user.carts.count > 0 && current_user.active_cart.items.include?(item) %>
+          <p>Added to cart</p>
+        <% else %>
+          <div>
+            <i class="fas fa-shopping-cart"></i>
+            <%= link_to "Add to cart", create_cart_item_path( user: current_user.id, item: item.id), method: :post %>
+          </div>
+        <% end %>
+
+      </div>
+    <% end %>
+  </div>
