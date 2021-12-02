@@ -30,8 +30,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user = current_user
     @item.save
-    redirect_to items_path
-    # item_path(@item)
+    redirect_to item_path(@item)
   end
 
   def destroy

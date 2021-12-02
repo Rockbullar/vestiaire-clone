@@ -10,7 +10,7 @@
   <div class="row">
 
     <div class="col-6">
-      <div class="card-category mt-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=@item.image_url%>)">
+      <%= cl_image_tag @item.image_url.key, height: 300, width: 400, crop: :fill %>
       </div>
     </div>
 
