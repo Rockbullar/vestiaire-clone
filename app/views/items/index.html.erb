@@ -1,15 +1,27 @@
 <div class="d-flex p-3">
-<%= link_to 'Tops', items_path(:categories => 'Tops'), class:'mx-5 btn-dark btn' %>
-<%= link_to 'Bottoms', items_path(:categories => 'Bottoms'), class:'mx-5 btn-dark btn' %>
-<%= link_to 'Accessories', items_path(:categories => 'Accessories'), class:'mx-5 btn-dark btn' %>
-<%= link_to 'Bags', items_path(:categories => 'Bags'), class:'mx-5 btn-dark btn' %>
+<%= link_to 'Tops', items_path(:by_categories => 'Tops'), class:'mx-5 btn-dark btn' %>
+<%= link_to 'Bottoms', items_path(:by_categories => 'Bottoms'), class:'mx-5 btn-dark btn' %>
+<%= link_to 'Accessories', items_path(:by_categories => 'Accessories'), class:'mx-5 btn-dark btn' %>
+<%= link_to 'Bags', items_path(:by_categories => 'Bags'), class:'mx-5 btn-dark btn' %>
 
 
 </div>
 <h1 class='border bg-light p-3 text-center'>All Items</h1>
-
+  <div class="row">
+    <div class="col-3">
+      <ul class="list-inline">
+        <form action="/items" class="mb-3">
+          <li class="list-inline-item"><input type="number" class="form-control mt-3" placeholder="Min price" name="by_price[min_price]" ></li>
+          <li class="list-inline-item"><input type="number" class="form-control mt-3" placeholder="Max price" name="by_price[max_price]" ></li>
+          <input type="submit" class="btn btn-dark btn-block mt-3"></li>
+        </form>
+      </ul>
+    </div>
+  </div>gaa
 <div class="container">
   <div class="cards row">
+    <div class="col-9">
       <%= render 'shared/item_card' %>
+    </div>
   </div>
 </div>
