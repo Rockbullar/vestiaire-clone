@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
 CartItem.destroy_all
 Item.destroy_all
 Cart.destroy_all
@@ -17,7 +18,8 @@ User.destroy_all
     password: '123456'
   })
   categories = ['Tops', 'Bottoms', 'Accessories', 'Bags'].sample
-  5.times do Item.create!({
+  5.times do
+    item = Item.create!({
     name: Faker::Commerce.product_name,
     size: ['S','M','L','XL','Fluffy'].sample,
     categories: categories,
@@ -25,8 +27,9 @@ User.destroy_all
     brand: Faker::Commerce.brand,
     is_sold: false,
     user: User.last,
-    image_url: "https://source.unsplash.com/600x400/?#{categories}"
-  })
+    })
+    file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+    item.image_url.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   end
 end
 
