@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6">
-      <img src= <%= @item.image_url %> alt="img">
+      <%= cl_image_tag @item.image_url.key, height: 300, width: 400, crop: :fill %>
     </div>
     <div class="col-6">
       <%= simple_form_for [@item] do |f| %>
