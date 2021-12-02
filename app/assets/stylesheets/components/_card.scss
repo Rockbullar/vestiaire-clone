@@ -5,6 +5,12 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
   justify-content: space-around;
+
+  &:hover {
+    border-color: tomato;
+    border-width: 3px;
+    transition: border 80ms;
+  }
 }
 
 .cards {
