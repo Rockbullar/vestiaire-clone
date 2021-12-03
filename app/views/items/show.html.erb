@@ -15,7 +15,7 @@
       <div class="col-8 py-3">
         <p>Size: <%= @item.size %></p>
         <p>$<%= @item.price %></p>
-        <p>Condition:<%= @item.condition %></p>
+        <p>Condition: <%= @item.condition %></p>
         <p><%= @item.location %>, from the seller <i><%= @item.user.email %></i></p>
         <% if current_user.carts.count > 0 && current_user.active_cart.items.include?(@item) %>
           <p>Item has been added to cart</p>
