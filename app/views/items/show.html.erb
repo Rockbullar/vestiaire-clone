@@ -7,7 +7,7 @@
       <%= @item.name %>
     </h3>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center ">
     <div class="col-8">
       <%= cl_image_tag @item.image_url.key, crop: :fill, class: 'w100' %>
     </div>
@@ -15,7 +15,9 @@
   <div class="row justify-content-center">
     <div class="col-8 py-3">
       <p>Size: <%= @item.size %></p>
-      <p><%= @item.price %></p>
+      <p>$<%= @item.price %></p>
+      <p>Condition:<%= @item.condition %></p>
+      <p><%= @item.location %>, from the seller <i><%= @item.user.email %></i></p>
       <% if current_user.carts.count > 0 && current_user.active_cart.items.include?(@item) %>
         <p>Item has been added to cart</p>
       <% else %>
