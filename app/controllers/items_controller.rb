@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.user = current_user
     if @item.save
+      flash.alert = "Item listed!"
       redirect_to user_items_path
     else
       render 'new'
