@@ -1,12 +1,20 @@
 import Swal from 'sweetalert2';
 
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-dark mx-3',
+    cancelButton: 'btn btn-light mx-3',
+  },
+  buttonsStyling: false,
+})
+
 const initNewItemSweetalert = () => {
   const swalButton = document.querySelector('#new_item_submit');
   if (swalButton) { // protect other pages
     swalButton.addEventListener('click', (e) => {
       e.preventDefault()
-      Swal.fire({
-        title: 'Are you sure you want to list this',
+      swalWithBootstrapButtons.fire({
+        text: 'Are you sure you want to list this item?',
         showCancelButton: true,
         confirmButtonText: `List Item`,
         cancelButtonText: `Cancel`,
