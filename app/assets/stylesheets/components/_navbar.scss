@@ -13,6 +13,7 @@
 
 .text-black {
   color: #000;
+  letter-spacing: 3px;
 }
 
 #cart-count {
@@ -24,9 +25,15 @@
 
 .categories-bar > .nav-link:hover {
   border-bottom: 4px solid black;
-  color: rgb(255, 110, 32);
+  color: #ff5826;
+  letter-spacing: 3px;
 }
 
 .categories-bar > .nav-link {
   border-bottom: 4px solid transparent;
+  letter-spacing: 3px;
+}
+
+.navbar-nav > .black {
+  background-color: black;
 }

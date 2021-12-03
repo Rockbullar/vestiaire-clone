@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
   has_scope :by_keyword
   has_scope :by_categories
   has_scope :by_size, using: %i[size_array], type: :hash
+  has_scope :by_location
+  has_scope :by_condition, using: %i[condition_array], type: :hash
 
   def index
     @items = apply_scopes(Item).all

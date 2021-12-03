@@ -1,7 +1,7 @@
 <!-- As a link -->
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
   <%= link_to root_path, class: "navbar-brand mx-auto" do %>
-    <i class="fas fa-angle-down fa-2x"></i>
+    <i class="fas fa-angle-down fa-3x black"></i>
   <% end %>
 </nav>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
@@ -21,10 +21,15 @@
       <%# show if not signed in %>
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to 'Sell an item', new_item_path, class: 'btn btn-dark'  %>
+          <%= link_to 'Sell an item', new_item_path, class: 'black btn btn-dark'  %>
         </li>
-        <li class="nav-item">
-          <%= link_to 'Your listings', user_items_path, class: "nav-link" %>
+        <li class="nav-item dropdown mx-5">
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <%= link_to "Your listings", user_items_path, class: "dropdown-item" %>
+            <%= link_to "Order History", carts_history_path, class: "dropdown-item" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
         </li>
         <li class="nav-item">
           <%= link_to cart_path, class: "nav-link" do %>
@@ -36,12 +41,6 @@
               <i class="fas fa-shopping-cart fa-lg"></i>
             <% end %>
           <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Order History', carts_history_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Log out', destroy_user_session_path, class: "nav-link", method: :delete %>
         </li>
       <% else %>
         <li class="nav-item">

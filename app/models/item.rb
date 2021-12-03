@@ -10,12 +10,20 @@ class Item < ApplicationRecord
     where('price >= ? AND price <= ?', min_price.to_f, max_price.to_f)
   end
 
+  scope :by_location, -> (location) do
+    where('location ILIKE ?', location)
+  end
+
   scope :by_categories, -> (categories) do
     where('categories ILIKE ?', categories)
   end
 
   scope :by_size, -> (size_array) do
     where("size ILIKE ANY ( array[?] )", size_array)
+  end
+
+  scope :by_condition, -> (condition_array) do
+    where("condtion ILIKE ANY ( array[?] )", condition_array)
   end
 
   scope :by_keyword, -> (given_keyword) do

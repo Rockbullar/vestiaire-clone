@@ -5,37 +5,47 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require "open-uri"
+puts "Cleanup DB"
 CartItem.destroy_all
 Item.destroy_all
 Cart.destroy_all
 User.destroy_all
 
 # SEED ON USER AS SELLER
-3.times do
+10.times do
+  puts "Creating sellers"
   User.create!({
     email: Faker::Internet.email,
     password: '123456'
   })
-  categories = ['Tops', 'Bottoms', 'Accessories', 'Bags'].sample
-  5.times do
+  categories = ['Tops', 'Bottoms', 'Accessories', 'Bags']
+
+  4.times do |x|
     item = Item.new({
-    name: Faker::Commerce.product_name,
+    name: "#{Faker::Commerce.material} #{categories[x-1]}",
     size: ['S','M','L','XL','Fluffy'].sample,
-    categories: categories,
+    categories: categories[x-1],
     price: Faker::Number.decimal(l_digits: 3, r_digits: 2),
     brand: Faker::Commerce.brand,
     is_sold: false,
     user: User.last,
+    location: ['Jakarta', 'Bangkok', 'Singapore', 'Manila'].sample,
+    condition: ['Very good condition', 'Good condition', 'Fair condition', 'Never worn', 'Never worn, with tag'].sample
     })
-    file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
-    item.image_url.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-    item.save
+    puts "Creating item: #{item.name}"
+
+    filename = File.join(File.dirname(__FILE__),"seeded_images/#{item.categories}/#{(1..7).to_a.sample}")
+
+    puts "Uploading filename: #{filename}"
+    file = open("#{filename}.jpg")
+    item.image_url.attach(io: file, filename: filename, content_type: 'image/jpg')
+    item.save!
   end
 end
 
 # SEED ON USER AS BUYER
 3.times do
+  puts "Creating buyers"
   User.create!({
     email: Faker::Internet.email,
     password: '123456'
@@ -49,3 +59,5 @@ end
     item: Item.order(Arel.sql('RANDOM()')).first
   })
 end
+
+puts "Done!"
