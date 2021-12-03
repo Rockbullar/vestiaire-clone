@@ -1,6 +1,6 @@
-<h1 class='border bg-light p-3 text-center'>All <%= params[:by_categories] %></h1>
+<h1 class='border bg-light p-3 text-center'>Discover <%= params[:by_categories] %></h1>
 
-<div class="categories-bar d-flex p-4">
+<div class="categories-bar d-flex justify-content-center p-4">
 <%= link_to 'Tops', items_path(:by_categories => 'Tops'), class:'text-black nav-link mx-3' %>
 <%= link_to 'Bottoms', items_path(:by_categories => 'Bottoms'), class:'text-black nav-link mx-3' %>
 <%= link_to 'Accessories', items_path(:by_categories => 'Accessories'), class:'text-black nav-link mx-3' %>
@@ -11,14 +11,14 @@
   <div class="row">
     <div class="col-3">
       <div class="filter">
-        <form action="/items" class="mb-1 py-4">
+        <form action="/items" class="mb-1 py-2">
           <input type="number" class="form-control mt-3" placeholder="Min price" name="by_price[min_price]" >
           <input type="number" class="form-control mt-3" placeholder="Max price" name="by_price[max_price]" >
           <input type="submit" class="btn btn-dark btn-block mt-3" value="Filter by price">
         </form>
       </div>
       <div class="filter">
-        <form action="/items" class="mb-1">
+        <form action="/items" class="mb-1 py-2">
         <div class="form-check">
           <input type="checkbox" id="size1" class="form-check-input" name="by_size[size_array][]" value="S">
           <label class="form-check-label" for="size1">S (<%= Item.all.where(size: 'S').count %>)</label>
@@ -43,7 +43,7 @@
         </form>
       </div>
       <div class="filter">
-        <form action="/items" class="mb-1">
+        <form action="/items" class="mb-1 py-2">
         <div class="form-check">
           <input class="form-check-input" type="radio" id="location1" name="by_location" value="Bangkok">
           <label class="form-check-label" for="location1">Bangkok (<%= Item.all.where(location: 'Bangkok').count %>)</label>
@@ -64,7 +64,7 @@
         </form>
       </div>
       <div class="filter">
-        <form action="/items" class="mb-1">
+        <form action="/items" class="mb-1 py-2">
           <div class="form-check">
             <input type="checkbox" id="condition1" class="form-check-input" name="by_condition[condition_array][]" value="Very good condition">
             <label class="form-check-label" for="condition1">Very good condition (<%= Item.all.where(condition: 'Very good condition').count %>)</label>
