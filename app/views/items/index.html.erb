@@ -1,10 +1,10 @@
 <h1 class='border bg-light p-3 text-center'>All <%= params[:by_categories] %></h1>
 
-<div class="d-flex justify-content-center p-3">
-<%= link_to 'Tops', items_path(:by_categories => 'Tops'), class:'mx-5 btn-dark btn' %>
-<%= link_to 'Bottoms', items_path(:by_categories => 'Bottoms'), class:'mx-5 btn-dark btn' %>
-<%= link_to 'Accessories', items_path(:by_categories => 'Accessories'), class:'mx-5 btn-dark btn' %>
-<%= link_to 'Bags', items_path(:by_categories => 'Bags'), class:'mx-5 btn-dark btn' %>
+<div class="categories-bar d-flex p-4">
+<%= link_to 'Tops', items_path(:by_categories => 'Tops'), class:'text-black nav-link mx-3' %>
+<%= link_to 'Bottoms', items_path(:by_categories => 'Bottoms'), class:'text-black nav-link mx-3' %>
+<%= link_to 'Accessories', items_path(:by_categories => 'Accessories'), class:'text-black nav-link mx-3' %>
+<%= link_to 'Bags', items_path(:by_categories => 'Bags'), class:'text-black nav-link mx-3' %>
 </div>
 
 <div class="container">
