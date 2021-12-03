@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   validate :size_check
   validate :category_check
   has_one_attached :image_url
+  validates :image_url, presence: true
 
   scope :by_price, -> (min_price, max_price) do
     where('price >= ? AND price <= ?', min_price.to_f, max_price.to_f)

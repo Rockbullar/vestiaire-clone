@@ -19,7 +19,7 @@ User.destroy_all
   })
   categories = ['Tops', 'Bottoms', 'Accessories', 'Bags'].sample
   5.times do
-    item = Item.create!({
+    item = Item.new({
     name: Faker::Commerce.product_name,
     size: ['S','M','L','XL','Fluffy'].sample,
     categories: categories,
@@ -30,6 +30,7 @@ User.destroy_all
     })
     file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
     item.image_url.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+    item.save
   end
 end
 
