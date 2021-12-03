@@ -31,11 +31,3 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 
 });
-
-document.querySelector('#new_item').addEventListener('submit', (e) => {
-  initSweetalert('#new_item_submit', {
-    title: "A nice alert",
-    text: "This is a great alert, isn't it?",
-    icon: "success"
-  });
-})
