@@ -24,8 +24,11 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user = current_user
-    @item.save
-    redirect_to user_items_path
+    if @item.save
+      redirect_to user_items_path
+    else
+      render 'new'
+    end
   end
 
   def destroy
