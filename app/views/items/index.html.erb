@@ -85,6 +85,7 @@
             <input type="checkbox" id="condition5" class="form-check-input" name="by_condition[condition_array][]" value="Never worn, with tag">
             <label class="form-check-label" for="condition5">Never worn, with tag (<%= Item.all.where(condition: 'Never worn, with tag').count %>)</label>
           </div>
+            <input type="submit" class="btn btn-dark btn-block mt-3" value="Filter by condition">
         </form>
       </div>
     </div>
