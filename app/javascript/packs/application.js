@@ -31,8 +31,8 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 
 });
-
-document.querySelector('#new_item').addEventListener('submit', (e) => {
+var newItemForm = document.querySelector('#new_item')
+newItemForm.addEventListener('submit', (e) => {
   initSweetalert('#new_item_submit', {
     title: "A nice alert",
     text: "This is a great alert, isn't it?",
