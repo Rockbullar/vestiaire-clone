@@ -29,13 +29,18 @@ import { initSweetalert } from '../plugins/init_sweetalert';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  initSweetalert('#new_item', {
+    title: 'This item was successfully added to your basket',
+    showCancelButton: true,
+    confirmButtonText: `Proceed to Checkout`,
+    cancelButtonText: `Continue Shopping`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire('Saved!', '', 'success')
+    } else if (result.isCancelled) {
+      Swal.fire('Changes are not saved', '', 'info')
+    }
+  });
 
 });
-var newItemForm = document.querySelector('#new_item')
-newItemForm.addEventListener('submit', (e) => {
-  initSweetalert('#new_item_submit', {
-    title: "A nice alert",
-    text: "This is a great alert, isn't it?",
-    icon: "success"
-  });
-})
