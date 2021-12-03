@@ -1,0 +1,31 @@
+.copyright {
+  color: grey;
+  font-size: 15px;
+  bottom: 10px;
+}
+
+footer {
+  background-color: black;
+  word-spacing: 2px;
+  padding-bottom: 30px;
+}
+.col-6 > .text-white {
+  text-indent: 4em;
+  padding-top: 25px;
+  letter-spacing: 5px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: start;
+  color: #ff5826;
+}
+
+.navigation > .nav-item {
+  color: #ff5826;
+  list-style-type: none;
+}
+
+.nav-item > .nav-link {
+  color: #ff5826;
+}
