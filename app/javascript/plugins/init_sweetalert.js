@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 
-const initNewItemSweetalert = ( options = {}) => {
+const initNewItemSweetalert = () => {
   const swalButton = document.querySelector('#new_item_submit');
   if (swalButton) { // protect other pages
     swalButton.addEventListener('click', (e) => {
@@ -24,12 +24,12 @@ const initNewItemSweetalert = ( options = {}) => {
   }
 };
 
-const initAddToCartSweetalert = (options = {}) => {
+const initAddToCartSweetalert = () => {
   const swalButton = document.querySelector('#add-to-cart');
   if (swalButton) { // protect other pages
     swalButton.addEventListener('click', (e) => {
       e.preventDefault()
-      alert(e)
+      // link_to is triggering on click and bypassing the eventlistener
       Swal.fire({
         title: 'Item added to cart',
         showCancelButton: true,
@@ -39,7 +39,6 @@ const initAddToCartSweetalert = (options = {}) => {
         .then((result) => {
           if (result.isConfirmed) {
             // document.location.href = "/cart"
-            alert('aaa')
           } else if (result.isCancelled) {
           }
 
