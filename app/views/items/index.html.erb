@@ -1,4 +1,4 @@
-<h1 class='border bg-light p-3 text-center'>All Items</h1>
+<h1 class='border bg-light p-3 text-center'>All <%= params[:by_categories] %></h1>
 
 <div class="categories-bar d-flex p-4">
 <%= link_to 'Tops', items_path(:by_categories => 'Tops'), class:'text-black nav-link mx-3' %>
@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-3">
       <div class="filter">
-        <form action="/items" class="mb-1">
+        <form action="/items" class="mb-1 py-4">
           <input type="number" class="form-control mt-3" placeholder="Min price" name="by_price[min_price]" >
           <input type="number" class="form-control mt-3" placeholder="Max price" name="by_price[max_price]" >
           <input type="submit" class="btn btn-dark btn-block mt-3" value="Filter by price">
