@@ -7,6 +7,8 @@
       <%= f.input :brand %>
       <%= f.input :size , collection: ['S','M','L','XL','Fluffy'], include_blank: false %>
       <%= f.input :categories , collection: ['Tops', 'Bottoms', 'Accessories', 'Bags'], include_blank: false %>
+      <%= f.input :condition , collection: ['Very good condition', 'Good condition', 'Fair condition', 'Never worn', 'Never worn, with tag'], include_blank: false %>
+      <%= f.input :location , collection: ['Bangkok', 'Jakarta', 'Manila', 'Singapore'], include_blank: false %>
       <%= f.input :image_url, as: :file %>
       <%= f.submit "List item", class: "btn btn-dark", id: "new_item_submit" %>
       <%= link_to "Back to listings", items_path, class: "btn btn-dark"  %>
