@@ -15,7 +15,7 @@
     border-width: 3px;
 
     img {
-      transform: scale(1.3)
+      transform: scale(1.05)
     }
   }
 
@@ -26,7 +26,7 @@
 
   img {
     object-fit: contain;
-    transition: transform 900ms
+    transition: transform 1000ms
   }
 }
 

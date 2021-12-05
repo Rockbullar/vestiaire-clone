@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   has_scope :by_price, using: %i[min_price max_price], type: :hash
-  has_scope :by_keyword
+  has_scope :by_keyword , using: %i[given_keyword], type: :hash
   has_scope :by_categories
   has_scope :by_size, using: %i[size_array], type: :hash
   has_scope :by_location

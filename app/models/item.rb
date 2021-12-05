@@ -23,7 +23,7 @@ class Item < ApplicationRecord
   end
 
   scope :by_condition, -> (condition_array) do
-    where("condtion ILIKE ANY ( array[?] )", condition_array)
+    where("condition ILIKE ANY ( array[?] )", condition_array)
   end
 
   scope :by_keyword, -> (given_keyword) do
@@ -31,8 +31,12 @@ class Item < ApplicationRecord
       items.name ILIKE ? \
       OR items.brand ILIKE ? \
       OR items.categories ILIKE ? \
+      OR items.location ILIKE ? \
+      OR items.condition ILIKE ANY ( array[?] )\
+      OR items.size ILIKE ANY ( array[?] ) \
+
     "
-    where(sql_query, "%#{given_keyword}%", "%#{given_keyword}%", "%#{given_keyword}%")
+    where(sql_query, "%#{given_keyword}%", "%#{given_keyword}%", "%#{given_keyword}%", "%#{given_keyword}%", given_keyword, given_keyword)
   end
 
   private

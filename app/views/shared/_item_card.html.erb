@@ -18,7 +18,7 @@
         <% else %>
           <div>
             <i class="fas fa-shopping-cart"></i>
-            <%= link_to "Add to cart", create_cart_item_path( user: current_user.id, item: item.id), method: :post %>
+            <%= link_to "Add to cart", create_cart_item_path( user: current_user.id, item: item.id), method: :post, id: "add-to-cart"%>
           </div>
         <% end %>
 

@@ -55,4 +55,28 @@ const initAddToCartSweetalert = () => {
   }
 };
 
-export { initNewItemSweetalert, initAddToCartSweetalert };
+const initEditItemSweetalert = () => {
+  const swalButton = document.querySelector('#edit_item_submit');
+  if (swalButton) { // protect other pages
+    swalButton.addEventListener('click', (e) => {
+      e.preventDefault()
+      swalWithBootstrapButtons.fire({
+        text: 'Are you sure you want to update this item?',
+        showCancelButton: true,
+        confirmButtonText: `Update Item`,
+        cancelButtonText: `Cancel`,
+      })
+        .then((result) => {
+          if (result.isConfirmed) {
+            // document.location.href = "/user_items"
+            $('#edit_item')[0].submit()
+
+          } else if (result.isCancelled) {
+          }
+
+        });;
+    });
+  }
+};
+
+export { initNewItemSweetalert, initAddToCartSweetalert, initEditItemSweetalert};

@@ -1,10 +1,10 @@
-<h1 class='border bg-light p-3 text-center'>Discover <%= params[:by_categories] %></h1>
+<h1 class='border bg-light p-3 text-center'>Discover <%= params[:by_keyword][:given_keyword] %></h1>
 
 <div class="categories-bar d-flex justify-content-center p-4">
-<%= link_to 'Tops', items_path(:by_categories => 'Tops'), class:'text-black nav-link mx-3' %>
-<%= link_to 'Bottoms', items_path(:by_categories => 'Bottoms'), class:'text-black nav-link mx-3' %>
-<%= link_to 'Accessories', items_path(:by_categories => 'Accessories'), class:'text-black nav-link mx-3' %>
-<%= link_to 'Bags', items_path(:by_categories => 'Bags'), class:'text-black nav-link mx-3' %>
+<%= link_to 'Tops', items_path(:by_keyword => 'Tops'), class:'text-black nav-link mx-3' %>
+<%= link_to 'Bottoms', items_path(:by_keyword => 'Bottoms'), class:'text-black nav-link mx-3' %>
+<%= link_to 'Accessories', items_path(:by_keyword => 'Accessories'), class:'text-black nav-link mx-3' %>
+<%= link_to 'Bags', items_path(:by_keyword => 'Bags'), class:'text-black nav-link mx-3' %>
 </div>
 
 <div class="container">
@@ -20,23 +20,23 @@
       <div class="filter">
         <form action="/items" class="mb-1 py-2">
         <div class="form-check">
-          <input type="checkbox" id="size1" class="form-check-input" name="by_size[size_array][]" value="S">
+          <input type="checkbox" id="size1" class="form-check-input" name="by_keyword[given_keyword][]" value="S">
           <label class="form-check-label" for="size1">S (<%= Item.all.where(size: 'S').count %>)</label>
         </div>
         <div class="form-check">
-          <input type="checkbox" id="size2" class="form-check-input" name="by_size[size_array][]" value="M">
+          <input type="checkbox" id="size2" class="form-check-input" name="by_keyword[given_keyword][]" value="M">
           <label class="form-check-label" for="size2">M (<%= Item.all.where(size: 'M').count %>)</label>
         </div>
         <div class="form-check">
-          <input type="checkbox" id="size3" class="form-check-input" name="by_size[size_array][]" value="L">
+          <input type="checkbox" id="size3" class="form-check-input" name="by_keyword[given_keyword][]" value="L">
           <label class="form-check-label" for="size3">L (<%= Item.all.where(size: 'L').count %>)</label>
         </div>
         <div class="form-check">
-          <input type="checkbox" id="size4" class="form-check-input" name="by_size[size_array][]" value="XL">
+          <input type="checkbox" id="size4" class="form-check-input" name="by_keyword[given_keyword][]" value="XL">
           <label class="form-check-label" for="size4">XL (<%= Item.all.where(size: 'XL').count %>)</label>
         </div>
         <div class="form-check">
-          <input type="checkbox" id="size5" class="form-check-input" name="by_size[size_array][]" value="Fluffy">
+          <input type="checkbox" id="size5" class="form-check-input" name="by_keyword[given_keyword][]" value="Fluffy">
           <label class="form-check-label" for="size5">Fluffy (<%= Item.all.where(size: 'Fluffy').count %>)</label>
         </div>
           <input type="submit" class="btn btn-dark btn-block mt-3" value="Filter by size">
@@ -45,19 +45,19 @@
       <div class="filter">
         <form action="/items" class="mb-1 py-2">
         <div class="form-check">
-          <input class="form-check-input" type="radio" id="location1" name="by_location" value="Bangkok">
+          <input class="form-check-input" type="radio" id="location1" name="by_keyword" value="Bangkok">
           <label class="form-check-label" for="location1">Bangkok (<%= Item.all.where(location: 'Bangkok').count %>)</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" id="location2" name="by_location" value="Jakarta">
+          <input class="form-check-input" type="radio" id="location2" name="by_keyword" value="Jakarta">
           <label class="form-check-label" for="location2">Jakarta (<%= Item.all.where(location: 'Jakarta').count %>)</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" id="location3" name="by_location" value="Manila">
+          <input class="form-check-input" type="radio" id="location3" name="by_keyword" value="Manila">
           <label class="form-check-label" for="location3">Manila (<%= Item.all.where(location: 'Manila').count %>)</label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" id="location4" name="by_location" value="Singapore">
+          <input class="form-check-input" type="radio" id="location4" name="by_keyword" value="Singapore">
           <label class="form-check-label" for="location4">Singapore (<%= Item.all.where(location: 'Singapore').count %>)</label>
         </div>
           <input type="submit" class="btn btn-dark btn-block mt-3" value="Filter by location">
@@ -66,23 +66,23 @@
       <div class="filter">
         <form action="/items" class="mb-1 py-2">
           <div class="form-check">
-            <input type="checkbox" id="condition1" class="form-check-input" name="by_condition[condition_array][]" value="Very good condition">
+            <input type="checkbox" id="condition1" class="form-check-input" name="by_keyword[given_keyword][]" value="Very good condition">
             <label class="form-check-label" for="condition1">Very good condition (<%= Item.all.where(condition: 'Very good condition').count %>)</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" id="condition2" class="form-check-input" name="by_condition[condition_array][]" value="Good condition">
+            <input type="checkbox" id="condition2" class="form-check-input" name="by_keyword[given_keyword][]" value="Good condition">
             <label class="form-check-label" for="condition2">Good condition (<%= Item.all.where(condition: 'Good condition').count %>)</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" id="condition3" class="form-check-input" name="by_condition[condition_array][]" value="Fair condition">
+            <input type="checkbox" id="condition3" class="form-check-input" name="by_keyword[given_keyword][]" value="Fair condition">
             <label class="form-check-label" for="condition3">Fair condition (<%= Item.all.where(condition: 'Fair condition').count %>)</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" id="condition4" class="form-check-input" name="by_condition[condition_array][]" value="Never worn">
+            <input type="checkbox" id="condition4" class="form-check-input" name="by_keyword[given_keyword][]" value="Never worn">
             <label class="form-check-label" for="condition4">Never worn (<%= Item.all.where(condition: 'Never worn').count %>)</label>
           </div>
           <div class="form-check">
-            <input type="checkbox" id="condition5" class="form-check-input" name="by_condition[condition_array][]" value="Never worn, with tag">
+            <input type="checkbox" id="condition5" class="form-check-input" name="by_keyword[given_keyword][]" value="Never worn, with tag">
             <label class="form-check-label" for="condition5">Never worn, with tag (<%= Item.all.where(condition: 'Never worn, with tag').count %>)</label>
           </div>
             <input type="submit" class="btn btn-dark btn-block mt-3" value="Filter by condition">

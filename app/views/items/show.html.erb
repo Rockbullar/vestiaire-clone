@@ -20,7 +20,7 @@
         <% if current_user.carts.count > 0 && current_user.active_cart.items.include?(@item) %>
           <p>Item has been added to cart</p>
         <% else %>
-          <%= link_to create_cart_item_path( user: current_user.id, item: @item.id), method: :post, class: 'btn cart btn-block' do %>
+          <%= link_to create_cart_item_path( user: current_user.id, item: @item.id), method: :post, class: 'btn cart btn-block', id: 'add-to-cart' do %>
             <i class="fas fa-cart-plus"></i> Add to cart
           <% end %>
         <% end %>
