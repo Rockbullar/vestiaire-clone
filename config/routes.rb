@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'items#index'
   # item routes
   resources :items
+  patch "/items/:id", to: "items#update", as: 'update_item'
   get "/user_items", to: "items#userlistings", as: 'user_items' #search for user's own listings
 
   # cart routes

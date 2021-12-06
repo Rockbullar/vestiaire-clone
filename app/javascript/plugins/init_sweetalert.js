@@ -69,7 +69,7 @@ const initEditItemSweetalert = () => {
         .then((result) => {
           if (result.isConfirmed) {
             // document.location.href = "/user_items"
-            $('#edit_item')[0].submit()
+            $('#update_item')[0].submit()
 
           } else if (result.isCancelled) {
           }
